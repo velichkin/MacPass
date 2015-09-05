@@ -70,7 +70,7 @@
     if (titleRange.location == NSNotFound || titleRange.length == 0) {
       titleRange = [entry.title rangeOfString:windowTitle options:NSCaseInsensitiveSearch];
     }
-    if(titleRange.location != NSNotFound && titleRange.length != 0) {
+    if ((titleRange.location != NSNotFound && titleRange.length != 0) || ([windowTitle isEqualToString:@"Window"] && [entry.notes rangeOfString:@"allowEmptyWindowAutoType" options:NSCaseInsensitiveSearch].length != 0)) {
       context = [[MPAutotypeContext alloc] initWithEntry:entry andSequence:entry.autotype.defaultKeystrokeSequence];
     }
     /* search in Autotype entries for match */
